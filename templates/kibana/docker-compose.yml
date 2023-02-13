@@ -1,0 +1,21 @@
+version: '2.2'
+
+services:
+
+#
+# @version  1.0.0
+# @author   https://github.com/linusniederer
+# @link     https://github.com/linusniederer/docker-templates/templates/kibana
+# @date     13.02.2023
+#
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.2
+    container_name: kibana
+    environment:
+       - ELASTICSEARCH_HOSTS=elasticsearch:9200
+    ports:
+      - 5601:5601
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./app:/usr/share/kibana/data
+    

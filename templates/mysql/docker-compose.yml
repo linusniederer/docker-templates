@@ -1,0 +1,23 @@
+version: '2.2'
+
+services:
+
+#
+# @version  1.0.0
+# @author   https://github.com/linusniederer
+# @link     https://github.com/linusniederer/docker-templates/templates/mysql
+# @date     13.02.2023
+#
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=
+      - TZ=Europe/Berlin 
+    ports:
+      - 33006:3306
+    volumes:
+      - ./app:/var/lib/mysql
+    command: mysqld --sql_mode="" --character-set-server=utf8 --collation-server=utf8_slovenian_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
+    restart: always

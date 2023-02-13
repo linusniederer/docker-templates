@@ -1,0 +1,26 @@
+version: '2.2'
+
+services:
+
+#
+# @version  1.0.0
+# @author   https://github.com/linusniederer
+# @link     https://github.com/linusniederer/docker-templates/templates/mysql-backup
+# @date     13.02.2023
+#
+  mysql-backup:
+    image: fradelg/mysql-cron-backup
+    container_name: mysql-backup
+    environment:
+      - MYSQL_USER=
+      - MYSQL_PASS=
+      - MYSQL_DB=
+      - CRON_TIME=0 0 * * *
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - TIMEOUT=10s
+      - INIT_BACKUP=1
+      - TZ=Europe/Berlin
+    volumes:
+      - ./app:/backup
+    
